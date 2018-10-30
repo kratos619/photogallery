@@ -13,7 +13,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        return 'photo';
     }
 
     /**
@@ -23,7 +23,7 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+        return 'create';
     }
 
     /**
@@ -45,7 +45,7 @@ class PhotoController extends Controller
      */
     public function show($id)
     {
-        //
+        return  $id;
     }
 
     /**
