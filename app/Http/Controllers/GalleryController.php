@@ -14,7 +14,8 @@ class GalleryController extends Controller
     public function index()
     {
         //
-        return 'hello laravel';
+        
+        return view('gallery/index');
     }
 
     /**
@@ -24,7 +25,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return 'create photo';
+        return view('gallery/create');
     }
 
     /**
