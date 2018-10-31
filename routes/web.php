@@ -23,3 +23,7 @@ Route::get('/photo/show/{id}','PhotoController@show');
 Route::resource('gallery', 'GalleryController');
 Route::resource('photo', 'PhotoController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
