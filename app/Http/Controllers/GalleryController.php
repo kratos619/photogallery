@@ -63,7 +63,9 @@ class GalleryController extends Controller
                     'cover_image' => $cover_image_file_name   
                 ]
                 );
-                return Redirect::route('gallery.index')->with('message','Gallery Created');
+
+                \Session::flash('message','Gallery Is Added');
+                return Redirect::route('gallery.index');
         
     }
 
@@ -76,7 +78,11 @@ class GalleryController extends Controller
     public function show($id)
     {
         //
-        return $id;
+        $galleri = DB::table('galleries')->where('id',$id)->first();
+        $photo = DB::table('photos')->where('gallery_id',$id)->get();
+        return view('gallery/show',compact('galleri','photo'));
+         
+
     }
 
     /**
