@@ -17,14 +17,12 @@
       <div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4">
 @foreach ($gallerys as $gallery)
     <div class="cell">
-      <a href="/gallery/show/{{$gallery->id}}">
-      <img class="thumbnail" src="/images/{{$gallery->cover_image}}">
-      
-      </a>    
-          
+        <a href="/gallery/show/{{$gallery->id}}">
+        <img class="thumbnail" src="/images/{{$gallery->cover_image}}">
+        </a>
           <h5>{{$gallery->name}}</h5>
           <p class="">{{$gallery->description}}</p>
-        </div>
+      </div>
 @endforeach
         
       </div>
