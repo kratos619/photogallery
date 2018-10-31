@@ -38,6 +38,12 @@
         <span class="title-bar-title">Mike Mikerson</span>
       </div>
     </div>
+
+    @if (Session::has('message'))
+        <div class="alert-danger">
+          {{ Session::get('message')}}
+        </div>
+    @endif
   @yield('content')
   </div>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

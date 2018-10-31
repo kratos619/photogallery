@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Http\Controllers\Redirect;
 
 class GalleryController extends Controller
 {
@@ -13,9 +15,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
-        
-        return view('gallery/index');
+        //get all gallery
+        $gallerys = DB::table('galleries')->get();
+        return view('gallery/index',compact('gallerys'));
     }
 
     /**
@@ -36,7 +38,33 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //insert to db
+
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $cover_image = $request->file('name');
+        $owner_id = 1;
+
+        //check upload
+
+        if($cover_image){
+           $cover_image_file_name =  time().$cover_image->getClientOriginalName();
+           $cover_image->move(public_path('images'),$cover_image_file_name);
+           //echo "<pre>". var_dump($cover_image_file_name) ."</pre>";
+         }else{
+            $cover_image_file_name = 'noimage.jpg';
+        }
+
+        DB::table('galleries')->insert(
+                [
+                    'owner_id' => $owner_id,
+                    'name' => $name,
+                    'description' => $description,
+                    'cover_image' => $cover_image_file_name   
+                ]
+                );
+                return Redirect::route('gallery.index')->with('message','Gallery Created');
+        
     }
 
     /**
