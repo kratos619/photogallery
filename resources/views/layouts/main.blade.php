@@ -22,11 +22,15 @@
       <div class="cell auto">
         <h5>main Menu</h5>
         <ul  class="side-nav">
+            @if (!Auth::check())
             <li><a href="/">Home</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/register">Register</a></li>
+            @else                
+            <li><a href="/logout">Logout</a></li>
             <li><a href="/gallery/create">Gallery Create</a></li>
-        </ul>
+            @endif
+          </ul>
       </div>
     </div>
   </div>

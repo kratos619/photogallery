@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Http\Controllers\Redirect;
+use Auth;
+use Redirect;
 
 class GalleryController extends Controller
 {
@@ -27,7 +28,12 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        return view('gallery/create');
+        if(!Auth::check()){
+            return Redirect::route('gallery.index');
+        }else{
+            return Redirect::route('gallery.index');
+        }
+        
     }
 
     /**

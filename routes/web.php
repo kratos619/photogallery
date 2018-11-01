@@ -11,18 +11,22 @@
 |
 */
 
-Auth::routes();
-
-Route::get('/','GalleryController@index');
-// show by id
-Route::get('/gallery/show/{id}','GalleryController@show');
-
-Route::get('/photo/create','PhotoController@create');
-// show by id
-Route::get('/photo/show/{id}','PhotoController@show');
-
-
-Route::resource('gallery', 'GalleryController');
-Route::resource('photo', 'PhotoController');
-
 //Route::get('/', 'HomeController@index');
+
+Route::group(['middleware' => ['web']], function () {
+
+    Auth::routes();
+
+    Route::get('/','GalleryController@index');
+    // show by id
+    Route::get('/gallery/show/{id}','GalleryController@show');
+
+    Route::get('/photo/create','PhotoController@create');
+    // show by id
+    Route::get('/photo/show/{id}','PhotoController@show');
+
+
+    Route::resource('gallery', 'GalleryController');
+    Route::resource('photo', 'PhotoController');
+    
+});
