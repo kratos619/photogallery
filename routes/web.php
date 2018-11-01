@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/','GalleryController@index');
 // show by id
 Route::get('/gallery/show/{id}','GalleryController@show');
@@ -23,7 +25,4 @@ Route::get('/photo/show/{id}','PhotoController@show');
 Route::resource('gallery', 'GalleryController');
 Route::resource('photo', 'PhotoController');
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index');
